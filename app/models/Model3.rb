@@ -24,10 +24,14 @@ class Theater
     end
 
     def buy_movie_ticket(person, movie)
+        time = Time.now
+        purchased = time.strftime("%m/%d/%y @ %I:%M %p")
         ticket = {}
         ticket[:person] = person
         ticket[:cost] = 15.95
         ticket[:movie] = movie
+        ticket[:theater] = self.name
+        ticket[:time] = purchased
         @tickets_sold << ticket
         "You have successfully purchased a ticket for #{movie.name.upcase} at #{self.name}"
     end
