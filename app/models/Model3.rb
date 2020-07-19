@@ -19,6 +19,10 @@ class Theater
         @@all
     end
 
+    def self.valid?(movie_theater)
+        Theater.all.find {|theater| theater.name.downcase == movie_theater}
+    end
+
     def new_movie(movie)
         @now_playing << movie
     end
