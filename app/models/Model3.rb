@@ -33,7 +33,7 @@ class Theater
         ticket[:theater] = self.name
         ticket[:time] = purchased
         @tickets_sold << ticket
-        "You have successfully purchased a ticket for #{movie.name.upcase} at #{self.name}"
+       # "You have successfully purchased a ticket for #{movie.name.upcase} at #{self.name}"
     end
 
     def find_ticket(customer)
