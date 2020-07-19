@@ -70,7 +70,9 @@ def run
     puts "To get a list of all the movies playing, press 1"
     puts "To get a list of all the movies playing by location, press 2."
     puts "To purchase a ticket for a show, press 3."
-    puts "To close this app, press 4."
+    puts "To view all your ticket stubs, press 4"
+    puts "To change user, press 5."
+    puts "To close this app, press 10."
     selection = gets.chomp.to_i
     if(selection == 1)
       puts "\nHere is a list of all the movies playing in your area:"
@@ -98,6 +100,10 @@ def run
       theater = Theater.all.find {|theater_location| theater_location.name.upcase == location.upcase}
       puts user.see_a_movie(show, theater)
     elsif(selection == 4)
+      puts user.view_ticket_stubs
+    elsif(selection == 5)
+      run
+    elsif(selection == 10)
       puts "Thank you for visiting MovieFone. Have a great day!"
       exit(true)
     end
