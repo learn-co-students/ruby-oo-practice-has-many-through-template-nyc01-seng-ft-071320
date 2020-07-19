@@ -101,7 +101,7 @@ def run
             puts "⭐️•🎥•⭐️•🎥•⭐️•🎥•⭐️•🎥•⭐️•🎥•⭐️•🎥•⭐️•🎥•⭐️•🎥•⭐️•🎥•⭐️•🎥•⭐️"
           end
         else
-          puts "Sorry, that theater does not exist on MovieFone.".red
+          puts "Sorry, that theater does not exist on MovieApp.".red
         end
       elsif(selection == 4)
         puts user.view_ticket_stubs
@@ -157,7 +157,7 @@ def run
         puts "Movie Database".bold.green
         puts Movie.database
       elsif(selection == 10)
-        puts "Thank you for visiting MovieFone. Have a great day!".bold.blue
+        puts "Thank you for visiting MovieApp!. Have a great day!".bold.blue
         exit(true)
       end
     end
