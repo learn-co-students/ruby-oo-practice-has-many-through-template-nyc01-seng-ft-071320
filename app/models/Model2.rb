@@ -14,9 +14,16 @@ class Movie
         @@all << self
     end
 
+    def self.exist?(movie)
+        Movie.all.find {|title| title.name.downcase == movie.downcase}
+    end
+
     def self.all
         @@all
     end
 
+    def self.database
+        Movie.all.map {|title| title.name.upcase}.sort
+    end
 
 end
