@@ -43,11 +43,23 @@ class MovieGoer
     end
 
     def view_ticket_stubs
-        Theater.all.map do |location|
+        all_movies = Theater.all.map do |location|
             location.tickets_sold.select do |sold|
                 sold[:person] == self
             end
         end.flatten
+        puts "Ticket Stub"
+        puts "_____________________________________________"
+        puts " "
+        list = all_movies.map do |stub|
+            ticket_info = "PURCHASE DATE: #{stub[:time]},"
+            ticket_info += " CUSTOMER: #{stub[:person].name },"
+            ticket_info += " PRICE: #{stub[:cost].to_s},"
+            ticket_info += " MOVIE: #{stub[:movie].name },"
+            ticket_info += " THEATER: #{stub[:theater]}"
+        end.sort {|a,b| b<=>a}
+        puts list
+        puts "______________________________________________"
     end
 
 end
