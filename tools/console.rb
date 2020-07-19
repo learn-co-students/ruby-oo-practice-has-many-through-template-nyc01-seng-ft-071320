@@ -5,11 +5,7 @@ def reload
 end
 
 
-david = MovieGoer.new("David")
-roy = MovieGoer.new("Roy")
-jordan = MovieGoer.new("Jordan")
-chelsea = MovieGoer.new("Chelsea")
-alyssa = MovieGoer.new("Alyssa")
+
 
 titanic = Movie.new("Titanic", 1998, "Touchstone")
 the_help = Movie.new("The Help", 2010, "Touchstone")
@@ -36,20 +32,40 @@ pheonix.new_movie(mean_girls)
 pheonix.new_movie(love_simon)
 pheonix.new_movie(hustlers)
 
-david.see_a_movie("titanic", amc)
-david.see_a_movie("mean girls", pheonix)
-roy.see_a_movie("hustlers", pheonix)
 
 
 
 def run 
-  puts "Welcome to MovieFone."
-  puts "Please select y/n if you would like to create an account."
+  puts "Welcome to MovieFone!".red.bold
+  puts "Please select y/n if you would like to create an account.".blue
   account = gets.chomp
   if(account.downcase == "y")
     puts "Please enter your name"
     name = gets.chomp
-    user = MovieGoer.new(name)
+    puts "Are you a manager of a theater? y/n"
+    mgr = gets.chomp
+    if (mgr.downcase == 'y')
+      puts "Please enter Manager password"
+      passcode = gets.chomp
+      if(passcode.downcase == "owner")
+        puts "Access Granted"
+        mgr = true
+      else
+        puts "Sorry incorrect password"
+      end
+    end
+    puts "Are you a Producer? y/n"
+    answer = gets.chomp
+    if(answer.downcase == 'y')
+      puts "Please enter Producer password"
+      passcode = gets.chomp
+      if(passcode.downcase == "producer")
+        prod = true
+      else
+        puts "Sorry inccorrect password."
+    end
+  end
+    user = MovieGoer.new(name, mgr, prod )
     run
 
   else
@@ -72,6 +88,8 @@ def run
     puts "To purchase a ticket for a show, press 3."
     puts "To view all your ticket stubs, press 4"
     puts "To change user, press 5."
+    puts "To add a movie, press 6. (Must have credentials)"
+    puts "To add a movie to your theater, press 7. (Must have credentials)"
     puts "To close this app, press 10."
     selection = gets.chomp.to_i
     if(selection == 1)
@@ -98,11 +116,25 @@ def run
       puts "Enter the location you would like to watch the movie at."
       location = gets.chomp
       theater = Theater.all.find {|theater_location| theater_location.name.upcase == location.upcase}
-      puts user.see_a_movie(show, theater)
+      if(theater)
+        if(user.see_a_movie(show, theater))
+        puts "You have successfully purchased a ticket for #{show.upcase} at #{location}"
+        end
+      else
+        puts "Sorry, that theater does not exist on MovieFone."
+      end
     elsif(selection == 4)
       puts user.view_ticket_stubs
     elsif(selection == 5)
       run
+    elsif(selection == 6)
+      if(user.mgr == true)
+        puts "Enter name of new movie"
+        movie = gets.chomp
+        Movie.new(movie)
+      else
+        puts "You do not have the correct credentials."
+      end
     elsif(selection == 10)
       puts "Thank you for visiting MovieFone. Have a great day!"
       exit(true)
