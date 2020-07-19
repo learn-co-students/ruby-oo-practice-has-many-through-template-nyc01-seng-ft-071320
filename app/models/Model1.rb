@@ -28,7 +28,7 @@ class MovieGoer
     def all_movies
         Theater.all.map do |movie|
             movie.now_playing.map do |movie_name|
-                movie_name.name
+                movie_name.name.upcase
             end
         end.flatten.uniq.sort
     end
@@ -52,7 +52,7 @@ class MovieGoer
             end
         end.flatten
         puts "Ticket Stub"
-        puts "_____________________________________________"
+        puts "_____________________________________________".blue.bold
         puts " "
         list = all_movies.map do |stub|
             ticket_info = "PURCHASE DATE: #{stub[:time]},"
@@ -62,7 +62,7 @@ class MovieGoer
             ticket_info += " THEATER: #{stub[:theater]}"
         end.sort {|a,b| b<=>a}
         puts list
-        puts "______________________________________________"
+        puts "______________________________________________".blue.bold
     end
 
 end
