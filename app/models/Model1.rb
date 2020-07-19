@@ -3,8 +3,11 @@
 class MovieGoer
     @@all = []
     attr_accessor :name, :selected_movie
-    def initialize(name)
+    attr_reader :mgr, :producer
+    def initialize(name, mgr = false, producer = false)
         @name = name
+        @mgr = mgr
+        @producer = producer
         save
     end
 
@@ -38,7 +41,7 @@ class MovieGoer
             end
             theater.buy_movie_ticket(self, @selected_movie[0])
         else
-            "Sorry, #{title.upcase} is not playing at #{theater.name}."
+           puts "Sorry, #{title.upcase} is not playing at #{theater.name}."
         end
     end
 
