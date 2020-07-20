@@ -1,20 +1,7 @@
-# Has-Many-Through
+# To run this file go into the folder and run: ruby run.rb
 
-This is boilerplate code for a has-many-through relationship. Make sure you `fork` the file to your repo!
+#There are credentials required to gain access to add movies && play them at your theater
 
-You can define your models in the three files in folder `app/models` and then, test your code in the `tools/console.rb` file.
+#You can find those credentials on line 19 && line 32 in the run.rb file if you want to have access to add movies
 
-To run your code, type `ruby tools/console.rb` from the root directory in your terminal.
-
-Here are some potential models you might use (The order of the models are random):
-
-- Doctor, Patient, Appointment
-- Artist, Genre, Song
-- Recipe, Ingredient, Quantity
-- Classroom, Student, Teacher
-- Subscription, Magazine, Person
-- Club, Student, Membership
-
-When creating the models, be sure to include rich instance variables, so you can do more with the models! For instance, a `doctor` model might have things like name, field (field of study), and cost while a `patient` model might have things like name, ailments and income. In doing this, you might want to write methods where a patient can find the doctors (s)he can afford and/or a doctor appropriate for his/her pain.
-
-There are no restrictions and no tests, so it's up to you to decide how to implement this!
+#Hope you enjoy! 😃
